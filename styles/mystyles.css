@@ -8,17 +8,18 @@
 }
 
 #content {
-    border: 1px black solid;
-    width: 500px;
-    height:200px;
+    width: 570px;
+    padding: 5px;
+    float: left;
 }
 
 .mainDiv {
     border: 1px black solid;
     float: left;
     width: 150px;
-    height: 150px;
-    background-color: aliceblue;
+    height: 130px;
+    background-color: #f5ffd3;
+    padding: 10px;
 }
 
 .button {
@@ -35,5 +36,17 @@
 }
 
 .blockBlue {
+    background-color: #3ad5ff;
+}
+
+.buttonGreen {
+    background-color: #6affc1;
+}
+
+.buttonRed {
+    background-color: #ff1a5d;
+}
+
+.buttonBlue {
     background-color: #3ad5ff;
 }
