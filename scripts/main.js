@@ -1,6 +1,9 @@
 'use strict';
 window.addEventListener('load', function () {
-    createWindow();
+    var content = document.getElementById('content');
+    content.innerHTML = buttonTpl;
 
+    addEvents();
+ira();
 
 }, false);

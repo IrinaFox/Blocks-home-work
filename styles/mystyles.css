@@ -1,21 +1,39 @@
-.contentDiv {
-    border: 1px black solid;
-    float: left;
-    width: 150px;
-    height: 150px;
-
-}
-
-.block {
+#block {
     border: 1px black solid;
     width: 100px;
     height: 100px;
     top: 25%;
     left: 25%;
+    margin: auto;
 }
 
 #content {
     border: 1px black solid;
     width: 800px;
     height: 400px;
+}
+
+.mainDiv {
+    border: 1px black solid;
+    float: left;
+    width: 150px;
+    height: 150px;
+    background-color: aliceblue;
+}
+
+.button {
+    clear: both;
+    float: left;
+}
+
+.blockRed {
+    background-color: #ff1a5d;
+}
+
+.blockGreen {
+    background-color: #55ffa9;
+}
+
+.blockBlue {
+    background-color: #78ffff;
 }
