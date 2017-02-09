@@ -9,8 +9,8 @@
 
 #content {
     border: 1px black solid;
-    width: 800px;
-    height: 400px;
+    width: 500px;
+    height:200px;
 }
 
 .mainDiv {
@@ -31,9 +31,9 @@
 }
 
 .blockGreen {
-    background-color: #55ffa9;
+    background-color: #6affc1;
 }
 
 .blockBlue {
-    background-color: #78ffff;
+    background-color: #3ad5ff;
 }
