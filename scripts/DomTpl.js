@@ -12,5 +12,3 @@ var buttonTpl = '<div class="mainDiv buttonContainer">\
                          <p class="counterBlue">Blue: :0</p>\
                          <p class="counterGreen">Green: :0</p>\
                       </div>';
-
-
