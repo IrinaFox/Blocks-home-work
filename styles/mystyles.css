@@ -2,14 +2,11 @@
     border: 1px black solid;
     width: 100px;
     height: 100px;
-    top: 25%;
-    left: 25%;
     margin: auto;
 }
 
 #content {
-    width: 570px;
-    padding: 5px;
+    width: 600px;
     float: left;
 }
 
@@ -20,11 +17,13 @@
     height: 130px;
     background-color: #f5ffd3;
     padding: 10px;
+
+    top: 0;
 }
 
 .button {
-    clear: both;
-    float: left;
+    display: block;
+    margin: 10px;
 }
 
 .blockRed {
