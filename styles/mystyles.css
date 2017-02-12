@@ -7,18 +7,16 @@
 
 #content {
     width: 600px;
-    float: left;
 }
 
 .mainDiv {
     border: 1px black solid;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
     width: 150px;
     height: 130px;
     background-color: #f5ffd3;
     padding: 10px;
-
-    top: 0;
 }
 
 .button {
