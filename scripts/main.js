@@ -1,6 +1,8 @@
 'use strict';
 window.addEventListener('load', function () {
-    displayDom();
+    displayButton();
+    displayBlock();
+    displayCounter();
 
-    addEvents();
+    addEventToButton();
 }, false);
