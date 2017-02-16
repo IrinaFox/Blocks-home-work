@@ -1,26 +1,66 @@
-function displayButton () {
-    var content = document.getElementById('content');
-    content.innerHTML += buttonTpl2;
-}
+'use strict';
 
-//add events to buttons
-function addEventToButton () {
-    var buttonRed = (document.getElementsByName('red'))[0],
-        buttonBlue = (document.getElementsByName('blue'))[0],
-        buttonGreen = (document.getElementsByName('green'))[0],
-        counterRed = makeCounter(),
-        counterBlue = makeCounter(),
-        counterGreen = makeCounter();
+function ButtonView () {
+    var containerDiv = document.createElement('div');
 
-    buttonRed.addEventListener('click', function () {
-        changeBlock('Red', counterRed);
-    }, false);
+    this.displayButton = function () {
+        var content = document.getElementById('content'),
+            miniDiv = document.createElement('div'),
+            colorCounter = new Counter(),
+            colors = colorCounter.toJSON(),
+            stringButton = '',
+            key;
 
-    buttonBlue.addEventListener('click', function () {
-        changeBlock('Blue', counterBlue);
-    }, false);
+        for (key in colors) {
+            var button;
 
-    buttonGreen.addEventListener('click', function () {
-        changeBlock('Green', counterGreen);
-    }, false);
+            stringButton = buttonTpl.replace(new RegExp(':color', 'g'), key);
+            miniDiv.innerHTML = stringButton;
+
+            containerDiv.appendChild(miniDiv);
+
+            button = containerDiv.getElementsByTagName('input')[0];
+            console.log(button);
+
+            button.addEventListener('click', function () {
+                var color = button.value;
+
+                changeBlock(color);
+            }, false);
+
+            console.log(containerDiv);
+        }
+
+
+        containerDiv.setAttribute('class', 'mainDiv');
+
+        content.appendChild(containerDiv);
+    };
+
+    this.addEvent = function () {
+        var buttons = containerDiv.getElementsByTagName('input'),
+            i;
+
+        for(i = 0; i < buttons.length; i++) {
+            var color = buttons[i].value;
+            console.log(color);
+
+            buttons[i].addEventListener('click', function () {
+                console.log('!!!!!!!!!!');
+                changeBlock(color);
+            }, false);
+        }
+    };
+
+    //Change the color of block
+    function changeBlock (Color) {
+        var block = document.getElementById('block');
+
+        console.log(block);
+
+        block.removeAttribute('class');
+        block.setAttribute('class', 'block' + Color);
+    }
+
+    return this;
 }
