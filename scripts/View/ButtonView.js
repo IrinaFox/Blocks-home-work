@@ -9,12 +9,11 @@ function ButtonView () {
         stringButton = '',
         key;
 
-
     this.displayButton = function () {
         for (key in colors) {
             var button;
 
-            stringButton = buttonTpl.replace(new RegExp(':color', 'g'), key);
+            stringButton = buttonTpl.replace(/:color/g, key);
             miniDiv.innerHTML += stringButton;
         }
 
