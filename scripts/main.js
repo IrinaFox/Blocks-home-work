@@ -1,10 +1,11 @@
 'use strict';
 
 window.addEventListener('load', function () {
-    var buttonView = new ButtonView();
+    var buttonView = new ButtonView(),
+        counter = new CounterView();
 
-    displayBlock();
-    displayCounter();
     buttonView.displayButton();
-   // buttonView.addEvent();
+    displayBlock();
+    counter.displayCounter();
+    buttonView.addEvent();
 }, false);

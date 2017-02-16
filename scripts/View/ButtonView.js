@@ -1,65 +1,64 @@
 'use strict';
 
 function ButtonView () {
-    var containerDiv = document.createElement('div');
+    var content = document.getElementById('content'),
+        colorCounter = new ColorCounter(),
+        counter = new CounterView(),
+        colors = colorCounter.toJSON(),
+        miniDiv = document.createElement('div'),
+        stringButton = '',
+        key;
+
 
     this.displayButton = function () {
-        var content = document.getElementById('content'),
-            miniDiv = document.createElement('div'),
-            colorCounter = new Counter(),
-            colors = colorCounter.toJSON(),
-            stringButton = '',
-            key;
-
         for (key in colors) {
             var button;
 
             stringButton = buttonTpl.replace(new RegExp(':color', 'g'), key);
-            miniDiv.innerHTML = stringButton;
-
-            containerDiv.appendChild(miniDiv);
-
-            button = containerDiv.getElementsByTagName('input')[0];
-            console.log(button);
-
-            button.addEventListener('click', function () {
-                var color = button.value;
-
-                changeBlock(color);
-            }, false);
-
-            console.log(containerDiv);
+            miniDiv.innerHTML += stringButton;
         }
 
+        miniDiv.setAttribute('class', 'mainDiv');
 
-        containerDiv.setAttribute('class', 'mainDiv');
-
-        content.appendChild(containerDiv);
+        content.appendChild(miniDiv);
     };
 
     this.addEvent = function () {
-        var buttons = containerDiv.getElementsByTagName('input'),
+        var buttons = miniDiv.getElementsByTagName('input'),
             i;
 
-        for(i = 0; i < buttons.length; i++) {
-            var color = buttons[i].value;
-            console.log(color);
+        miniDiv.addEventListener('click', function (event) {
+            var target = event.target,
+                color = target.value;
 
-            buttons[i].addEventListener('click', function () {
-                console.log('!!!!!!!!!!');
+            if (target.tagName === 'INPUT') {
                 changeBlock(color);
-            }, false);
-        }
+                counter.changeCounter(color);
+            }
+        }, false);
+
+        /*for (i = 0; i < buttons.length; i++) {
+            var color = buttons[i].value;
+
+            buttons[i].addEventListener('click', (function(color){
+
+                return function(){
+                    changeBlock(color);
+                }
+            }(i)),false)
+        } */
+
     };
 
     //Change the color of block
-    function changeBlock (Color) {
-        var block = document.getElementById('block');
-
-        console.log(block);
+    function changeBlock (_color) {
+        var block = document.getElementById('block'),
+            color = _color;
 
         block.removeAttribute('class');
-        block.setAttribute('class', 'block' + Color);
+        block.setAttribute('class', 'block' + color);
+
+        colorCounter.increaseCounter(color);
     }
 
     return this;

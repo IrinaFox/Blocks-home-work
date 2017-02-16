@@ -1,6 +1,6 @@
 'use strict';
 
-function Counter () {
+function ColorCounter () {
     var counterOfColor = {
         Red: 0,
         Blue: 0,
@@ -9,6 +9,7 @@ function Counter () {
 
     this.increaseCounter = function (color) {
         counterOfColor[color]++;
+        console.log(counterOfColor);
     };
 
     this.toJSON = function () {
@@ -20,6 +21,7 @@ function Counter () {
         }
 
         return returnedCounterOfColor;
-    }
+    };
 
+    return this;
 }
