@@ -24,26 +24,14 @@
     margin: 10px;
 }
 
-.blockRed {
+.red {
     background-color: #ff1a5d;
 }
 
-.blockGreen {
+.green {
     background-color: #6affc1;
 }
 
-.blockBlue {
-    background-color: #3ad5ff;
-}
-
-.buttonGreen {
-    background-color: #6affc1;
-}
-
-.buttonRed {
-    background-color: #ff1a5d;
-}
-
-.buttonBlue {
+.blue {
     background-color: #3ad5ff;
 }

@@ -26,7 +26,6 @@ function CounterView () {
         colors = colorCounter.toJSON();
 
         for (key in colors) {
-            console.log(colors[key]);
             containerDiv.innerHTML += key + ': ' + colors[key] + '<br>';
         }
 

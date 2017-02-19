@@ -2,25 +2,24 @@
 
 function ColorCounter () {
     var counterOfColor = {
-        Red: 0,
-        Blue: 0,
-        Green: 0
-    };
+            red: 0,
+            blue: 0,
+            green: 0
+        };
 
     this.increaseCounter = function (color) {
         counterOfColor[color]++;
-        console.log(counterOfColor);
     };
 
     this.toJSON = function () {
-        var returnedCounterOfColor = {},
+        var JSON = {},
             key;
 
         for (key in counterOfColor) {
-            returnedCounterOfColor[key] = counterOfColor[key];
+            JSON[key] = counterOfColor[key];
         }
 
-        return returnedCounterOfColor;
+        return JSON;
     };
 
     return this;

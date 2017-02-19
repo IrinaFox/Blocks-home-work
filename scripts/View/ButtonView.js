@@ -6,58 +6,35 @@ function ButtonView () {
         counter = new CounterView(),
         colors = colorCounter.toJSON(),
         miniDiv = document.createElement('div'),
-        stringButton = '',
+        block =  new BlockView(),
+        stringElement = '',
         key;
 
     this.displayButton = function () {
         for (key in colors) {
-            var button;
+            var newButton = buttonTpl.replace(/:color/g, key);
 
-            stringButton = buttonTpl.replace(/:color/g, key);
-            miniDiv.innerHTML += stringButton;
+            stringElement += newButton;
         }
+        miniDiv.innerHTML += stringElement;
 
         miniDiv.setAttribute('class', 'mainDiv');
-
         content.appendChild(miniDiv);
+
+        addEvent();
     };
 
-    this.addEvent = function () {
-        var buttons = miniDiv.getElementsByTagName('input'),
-            i;
+    function addEvent () {
+        var buttons = miniDiv.getElementsByTagName('input');
 
-        miniDiv.addEventListener('click', function (event) {
-            var target = event.target,
-                color = target.value;
+        [].forEach.call(buttons, function (button) {
+            button.addEventListener('click', function () {
+                var color = button.value;
 
-            if (target.tagName === 'INPUT') {
-                changeBlock(color);
+                block.changeBlock(color);
                 counter.changeCounter(color);
-            }
-        }, false);
-
-        /*for (i = 0; i < buttons.length; i++) {
-            var color = buttons[i].value;
-
-            buttons[i].addEventListener('click', (function(color){
-
-                return function(){
-                    changeBlock(color);
-                }
-            }(i)),false)
-        } */
-
-    };
-
-    //Change the color of block
-    function changeBlock (_color) {
-        var block = document.getElementById('block'),
-            color = _color;
-
-        block.removeAttribute('class');
-        block.setAttribute('class', 'block' + color);
-
-        colorCounter.increaseCounter(color);
+            }, false);
+        });
     }
 
     return this;
