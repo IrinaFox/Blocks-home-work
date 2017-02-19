@@ -5,14 +5,19 @@ function CounterView () {
         containerDiv = document.createElement('div'),
         colorCounter = new ColorCounter(),
         colors = colorCounter.toJSON(),
+        stringElement = '',
         key;
 
     this.displayCounter = function () {
-        containerDiv.setAttribute('class', 'mainDiv');
         for (key in colors) {
-            containerDiv.innerHTML += key + ': ' + colors[key] + '<br>';
+            var counter = key + ': ' + colors[key] + '<br>';
+
+            stringElement += counter;
         }
 
+        containerDiv.setAttribute('class', 'mainDiv');
+        containerDiv.innerHTML = stringElement;
+        
         content.appendChild(containerDiv);
     };
 
