@@ -1,18 +1,18 @@
 'use strict';
 
 function BlockView () {
-    var content = document.getElementById('content'),
+    var content = document.querySelector('#content'),
         containerDiv = document.createElement('div');
 
     this.displayBlock = function () {
-        containerDiv.setAttribute('class', 'mainDiv');
+        containerDiv.classList.add('mainDiv');
         containerDiv.innerHTML = blockTpL;
 
         content.appendChild(containerDiv);
     };
 
     this.changeBlock = function (_color) {
-        var block = document.getElementById('block'),
+        var block = document.querySelector('#block'),
             color = _color;
 
         block.removeAttribute('class');
