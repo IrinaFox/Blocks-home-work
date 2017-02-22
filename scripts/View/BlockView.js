@@ -2,8 +2,7 @@
 
 function BlockView () {
     var content = document.querySelector('#content'),
-        containerDiv = document.createElement('div'),
-        colorCounter = new ColorCounter();
+        containerDiv = document.createElement('div');
 
     this.displayBlock = function () {
         containerDiv.classList.add('mainDiv');
@@ -17,11 +16,8 @@ function BlockView () {
             color = _color;
 
         block.removeAttribute('class');
-        block.setAttribute('class', color);
+        block.classList.add(color);
     };
 
     return this;
 }
-
-
-
