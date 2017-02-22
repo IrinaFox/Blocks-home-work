@@ -2,7 +2,8 @@
 
 function BlockView () {
     var content = document.querySelector('#content'),
-        containerDiv = document.createElement('div');
+        containerDiv = document.createElement('div'),
+        colorCounter = new ColorCounter();
 
     this.displayBlock = function () {
         containerDiv.classList.add('mainDiv');

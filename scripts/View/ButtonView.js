@@ -26,6 +26,21 @@ function ButtonView () {
         addEvent();
     };
 
+    colorCounter.on('red', function () {
+        block.changeBlock('red');
+        counter.changeCounter('red');
+    });
+
+    colorCounter.on('blue', function () {
+        block.changeBlock('blue');
+        counter.changeCounter('blue');
+    });
+
+    colorCounter.on('green', function () {
+        block.changeBlock('green');
+        counter.changeCounter('green');
+    });
+
     function addEvent () {
         var buttons = miniDiv.querySelectorAll('input');
 
@@ -33,8 +48,7 @@ function ButtonView () {
             button.addEventListener('click', function () {
                 var color = button.value;
 
-                block.changeBlock(color);
-                counter.changeCounter(color);
+                colorCounter.set(color);
             }, false);
         });
     }

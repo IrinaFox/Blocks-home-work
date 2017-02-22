@@ -5,7 +5,21 @@ function ColorCounter () {
             red: 0,
             blue: 0,
             green: 0
-        };
+        },
+        listeners = {
+            reg: [],
+            green: [],
+            blue: []
+        },
+        colorNow = undefined;
+
+    this.on = function (eventName, callback) {
+        if (!listeners.hasOwnProperty(eventName)) {
+            listeners[eventName] = [];
+        }
+
+        listeners[eventName].push(callback);
+    };
 
     this.increaseCounter = function (color) {
         counterOfColor[color]++;
@@ -21,6 +35,21 @@ function ColorCounter () {
 
         return JSON;
     };
+
+    this.set = function (_value) {
+        var value = _value,
+            colorNow = value;
+
+       triggerEvent(colorNow);
+    };
+
+    function triggerEvent (eventName) {
+        if (listeners.hasOwnProperty(eventName)) {
+            listeners[eventName].forEach(function (callback) {
+                callback();
+            });
+        }
+    }
 
     return this;
 }
