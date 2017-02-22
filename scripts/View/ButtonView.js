@@ -4,7 +4,7 @@ function ButtonView () {
     var content = document.querySelector('#content'),
         miniDiv = document.createElement('div'),
         colorCounter = new ColorCounter(),
-        colors = colorCounter.toJSON(),
+        colors = colorCounter.toArray(),
         counter = new CounterView(),
         block =  new BlockView(),
         key;
@@ -12,11 +12,16 @@ function ButtonView () {
     this.displayButton = function () {
         var stringElement = '';
 
-        for (key in colors) {
-            var newButton = buttonTpl.replace(/:color/g, key);
+        colors.forEach(function (color) {
+            var newButton = buttonTpl.replace(/:color/g, color);
 
             stringElement += newButton;
-        }
+
+            colorCounter.on(color, function () {
+                block.changeBlock(color);
+                counter.changeCounter(color);
+            });
+        });
 
         miniDiv.innerHTML += stringElement;
 
@@ -25,21 +30,6 @@ function ButtonView () {
 
         addEvent();
     };
-
-    colorCounter.on('red', function () {
-        block.changeBlock('red');
-        counter.changeCounter('red');
-    });
-
-    colorCounter.on('blue', function () {
-        block.changeBlock('blue');
-        counter.changeCounter('blue');
-    });
-
-    colorCounter.on('green', function () {
-        block.changeBlock('green');
-        counter.changeCounter('green');
-    });
 
     function addEvent () {
         var buttons = miniDiv.querySelectorAll('input');

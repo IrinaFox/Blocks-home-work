@@ -25,6 +25,19 @@ function ColorCounter () {
         counterOfColor[color]++;
     };
 
+    this.toArray = function () {
+        var JSON = [],
+            index = 0,
+            key;
+
+        for (key in counterOfColor) {
+            JSON[index] = key;
+            index++;
+        }
+
+        return JSON;
+    };
+
     this.toJSON = function () {
         var JSON = {},
             key;

@@ -16,13 +16,14 @@ function CounterView () {
             stringElement += counter;
         }
 
-        containerDiv.setAttribute('class', 'mainDiv');
+        containerDiv.classList.add('mainDiv');
         containerDiv.innerHTML = stringElement;
 
         content.appendChild(containerDiv);
     };
 
     this.changeCounter = function (_color) {
+        console.log('works');
         var counterDiv = document.querySelectorAll('.mainDiv')[2];
 
         counterDiv.innerHTML = '';
